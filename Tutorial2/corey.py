@@ -4,12 +4,12 @@ import requests
 url = 'https://www.patreon.com/coreyms'
 path = 'Tutorial2/copyIndexSexy.html'
 
-r = requests.get(url)
-print(r.text)
+source = requests.get(url).text
 
-with open (r.text) as f:
-    soup = BeautifulSoup(f, 'lxml')
-    print(soup.prettify())
+soup = BeautifulSoup(source , 'lxml')
+
+print(soup.prettify())
+
  
 
 
