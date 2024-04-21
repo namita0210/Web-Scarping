@@ -11,11 +11,31 @@ def saveFile(url , path): #Save url as file and then get its contents
 
 #saveFile(url , path)
 
+r = requests.get(url)  #Get the contents from url
+#print(r.text)
+
 with open('index.html') as f: #Get the contents from html file with lxml parser
     soup = BeautifulSoup(f, 'lxml')
 
-#print(soup)
+#print(soup.prettify())
 
-r = requests.get(url)  #Get the contents from url
-#print(r.text)
+#get the title
+match = soup.title
+# print(match.text)
+
+#get all the divs
+divs = soup.div
+#print(divs)
+
+article = soup.find_all('div' , class_='article')
+
+for i,a in enumerate(article):
+    print(i ,' ',a,'\n\n')
+
+    headline = a.h2.a.text
+    print('\n',headline)
+
+    summary = a.p.text
+    print('\n',summary,'\n---------------------------------------')
+
 
