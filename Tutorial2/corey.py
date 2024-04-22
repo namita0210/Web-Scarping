@@ -8,8 +8,8 @@ source = requests.get(url).text
 
 soup = BeautifulSoup(source , 'lxml')
 
-print(soup.prettify())
+#print(soup.prettify())
 
- 
-
+container = soup.find('main') 
+print(container.prettify())
 
